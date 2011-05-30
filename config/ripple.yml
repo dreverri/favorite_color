@@ -1,0 +1,16 @@
+development:
+  http_port: 8098
+  pb_port: 8087
+  host: localhost
+
+test:
+  http_port: 9000
+  pb_port: 9002
+  host: localhost
+  bin_dir: /Users/dreverri/src/basho/riak/rel/riak/bin
+  temp_dir: /tmp/.favorite_color_test
+
+production:
+  http_port: 8098
+  pb_port: 8087
+  host: localhost
