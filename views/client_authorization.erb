@@ -1,0 +1,12 @@
+<div>
+The application <a href="<%= oauth.client.link
+                         %>"><%= oauth.client.display_name %></a> is requesting to <%= oauth.scope.to_sentence %> your account.
+</div>
+  <form action="/oauth/grant" method="post">
+    <button>Grant</button>
+    <input type="hidden" name="authorization" value="<%= oauth.authorization %>">
+  </form>
+  <form action="/oauth/deny" method="post">
+    <button>Deny</button>
+    <input type="hidden" name="authorization" value="<%= oauth.authorization %>">
+  </form>

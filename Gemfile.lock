@@ -1,11 +1,11 @@
 GIT
   remote: git://github.com/dreverri/rack-oauth2-server.git
-  revision: a77be5be5259734ed34190e5cf395b418b45fc87
+  revision: 7b293edb756606a0001c32819e45a9c0565df184
+  ref: 7b293edb756606a0001c32819e45a9c0565df184
   specs:
     rack-oauth2-server (2.2.1)
-      bson_ext
-      mongo (~> 1)
       rack (~> 1.1)
+      ripple
       sinatra (~> 1.1)
 
 GEM
@@ -18,8 +18,6 @@ GEM
     activesupport (3.0.5)
     addressable (2.2.4)
     beefcake (0.3.1)
-    bson (1.3.1)
-    bson_ext (1.3.1)
     builder (2.1.2)
     diff-lcs (1.1.2)
     faraday (0.6.1)
@@ -28,8 +26,6 @@ GEM
       rack (< 2, >= 1.1.0)
     i18n (0.6.0)
     mime-types (1.16)
-    mongo (1.3.1)
-      bson (>= 1.3.1)
     multi_json (1.0.3)
     multi_xml (0.2.2)
     multipart-post (1.1.2)
@@ -114,8 +110,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bson_ext
-  mongo
   omniauth
   rack-oauth2-server!
   rack-test
