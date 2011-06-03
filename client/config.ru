@@ -1,4 +1,3 @@
-#\ -p 7001
 require 'rubygems'
 require 'bundler'
 
