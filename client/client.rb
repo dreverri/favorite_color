@@ -61,6 +61,11 @@ module FavoriteColor
       # redirect to /
       redirect to('/')
     end
+
+    get '/logout' do
+      session['access_token'] = nil
+      redirect to('/')
+    end
   end
 end
 
