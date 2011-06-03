@@ -1,6 +1,7 @@
 module FavoriteColor
   class Server < Sinatra::Base
     configure do
+      set :views, File.join(File.dirname(__FILE__), '..', '..', 'views')
       config_dir = File.join(File.dirname(__FILE__), '..', '..', 'config')
       Ripple.load_config(config_dir + '/ripple.yml', [settings.environment])
 

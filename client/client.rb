@@ -5,6 +5,10 @@ require 'json'
 
 module FavoriteColor
   class Client < Sinatra::Base
+    configure do
+      set :views, File.join(File.dirname(__FILE__), 'views')
+    end
+
     use Rack::Session::Cookie, :key => 'rack.session.favorite_color'
 
     get '/' do
