@@ -1,7 +1,7 @@
 module FavoriteColor
-  class App < Sinatra::Base
+  class Server < Sinatra::Base
     configure do
-      config_dir = File.join(File.dirname(__FILE__), '..', '..', '..', 'config')
+      config_dir = File.join(File.dirname(__FILE__), '..', '..', 'config')
       Ripple.load_config(config_dir + '/ripple.yml', [settings.environment])
 
       c = YAML.load(ERB.new(File.read(config_dir + '/settings.yml')).result)
@@ -13,10 +13,10 @@ module FavoriteColor
 
     # 3rd party authorization
     use OmniAuth::Builder do
-      provider :twitter, App.settings.twitter['key'], App.settings.twitter['secret']
+      provider :twitter, Server.settings.twitter['key'], Server.settings.twitter['secret']
     end
 
-    # App
+    # Server
     helpers do
       def current_user
         @current_user ||= User.find(session['user_key']) if session['user_key']
@@ -35,9 +35,21 @@ module FavoriteColor
       erb :index
     end
 
-    get '/api.json' do
+    post '/' do
+      current_user.update_attributes(:favorite_color => params[:favorite_color])
+      redirect to('/')
+    end
+
+    post '/client' do
+      current_user.clients.build(:display_name => params[:display_name],
+                                 :scope => %{read write})
+      current_user.save!
+      redirect to('/')
+    end
+
+    get '/api' do
       if oauth.authenticated?
-        user = User.find(oauth.identity)
+        User.find(oauth.identity).to_json
       else
         halt 401
       end
@@ -58,7 +70,7 @@ module FavoriteColor
       session['user_key'] = @auth.user.key
       if session['authorization']
         authorization = session.delete('authorization')
-        redirect to('/oauth/authorize?authorization=#{authorization}')
+        redirect to("/oauth/authorize?authorization=#{authorization}")
       else
         redirect to('/')
       end

@@ -1,2 +1,2 @@
 .DS_Store
-config/settings.yml
+server/config/settings.yml

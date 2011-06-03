@@ -23,5 +23,9 @@ module FavoriteColor
       user.save!
       return a
     end
+
+    def as_json(option={})
+      attributes
+    end
   end
 end

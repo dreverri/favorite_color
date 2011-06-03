@@ -13,5 +13,5 @@ require 'favorite_color/models/extra'
 require 'favorite_color/models/user_info'
 require 'favorite_color/models/user'
 
-# Middleware
-require 'favorite_color/middleware/app'
+# Server
+require 'favorite_color/server'

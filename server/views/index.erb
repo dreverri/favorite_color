@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>Favorite Color</title>
+  </head>
+  <body>
+    <% if current_user %>
+    <h3>Actions</h3>
+    <div><a href="<%= url('/logout') %>">Logout</a></div>
+
+    <h3>Favorite Color</h3>
+    <div>
+      <form action="<%= url('/') %>" method="post">
+        <input type="text" name="favorite_color"
+               value="<%= current_user.favorite_color %>" />
+        <input type="submit" value="update" />
+      </form>
+    </div>
+
+    <h3>Registered Clients</h3>
+    <div>---</div>
+    <% current_user.clients.each do |client| %>
+    <div>Display Name: <span><%= client.display_name %></span></div>
+    <div>Client ID: <span><%= client.id %></span></div>
+    <div>Client Secret: <span><%= client.secret %></span></div>
+    <div>---</div>
+    <% end %>
+
+    <h3>New Client Form</h3>
+    <form action="<%= url('/client') %>" method="post">
+      <div>Display Name:<input type="text" name="display_name"
+      value="" /></div>
+      <input type="submit" value="Submit" />
+    </form>
+
+    <% else %>
+    <a href="<%= url('/auth/twitter') %>">Sign in with Twitter</a>
+    <% end %>
+  </body>
+</html>

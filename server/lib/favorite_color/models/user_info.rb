@@ -10,5 +10,9 @@ module FavoriteColor
     property :description, String
     property :image, String # URL
     property :urls, Hash # "Blog" => "http://intridea.com/blog"
+
+    def as_json(option={})
+      attributes
+    end
   end
 end
