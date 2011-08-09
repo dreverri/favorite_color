@@ -1,12 +1,12 @@
 GIT
   remote: git://github.com/dreverri/rack-oauth2-server.git
-  revision: 7b293edb756606a0001c32819e45a9c0565df184
-  ref: 7b293edb756606a0001c32819e45a9c0565df184
+  revision: 52dbf599c77c4f1dc56a139f03770fc18534914f
+  branch: ripple
   specs:
     rack-oauth2-server (2.2.1)
-      rack (~> 1.1)
+      rack (>= 1.1)
       ripple
-      sinatra (~> 1.1)
+      sinatra (>= 1.1)
 
 GEM
   remote: http://rubygems.org/
